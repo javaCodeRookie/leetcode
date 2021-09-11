@@ -38,6 +38,8 @@ public class 加一 {
      * 内存消耗：36.8 MB, 在所有 Java 提交中击败了62.06%的用户
      * 通过测试用例：
      * 111 / 111
+     * 时间复杂度：O(N）
+     * 空间复杂度：O（N）
      * @param digits
      * @return
      */
@@ -55,6 +57,23 @@ public class 加一 {
                 //某一位如果为9，加一之后就让先让他变为0
                 digits[i] = 0;
             }
+        }
+
+        //跳出循环说明每一位都是9
+        int[] res = new int[len + 1];
+        res[0] = 1;
+        return res;
+    }
+
+
+    public int[] plusOne1(int[] digits) {
+
+        int len = digits.length;
+        for (int i = len - 1; i >= 0 ; i--) {
+            digits[i] += 1;
+            digits[i] %= 10;
+            if (digits[i] != 0)//只要除以10的余数不为0，就说明加一之后是不会为进位的
+                return digits;
         }
 
         //跳出循环说明每一位都是9
